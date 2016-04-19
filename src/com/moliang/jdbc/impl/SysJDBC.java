@@ -12,7 +12,7 @@ import com.mysql.jdbc.Connection;
 public class SysJDBC implements ISysJDBC {
 
 	private static final String Driver = "org.gjt.mm.mysql.Driver";
-	private static final String Url = "jdbc:mysql://120.26.235.45:3306/moliang";
+	private static final String Url = "jdbc:mysql://localhost:3306/shop";
 	private static final String user = "root";
 	private static final String pwd = "H3ll0123";
 	Statement stmt= null;

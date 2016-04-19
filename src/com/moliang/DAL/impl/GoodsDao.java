@@ -23,7 +23,7 @@ public class GoodsDao implements IGoodsDao {
 	}
 	@Override
 	public JSONArray ListGoods(int page, int size) {
-		String sSql = "select * from mo_goods limit ?,?";
+		String sSql = "select * from goods limit ?,?";
 		jdbc.getConnection();
 		ResultSet rs = jdbc.executeQuery(sSql, (page-1)*size, page*size);
 		JSONArray array = new JSONArray();
@@ -31,7 +31,7 @@ public class GoodsDao implements IGoodsDao {
 		try {
 			while(rs.next()){
 				object = new JSONObject();
-				object.put("GoodsId", rs.getString("goods_id"));
+				/*object.put("GoodsId", rs.getString("goods_id"));
 				object.put("ClassId", rs.getString("class_id"));
 				object.put("Name", rs.getString("goods_name"));
 				object.put("Icon", rs.getString("goods_icon"));
@@ -47,7 +47,18 @@ public class GoodsDao implements IGoodsDao {
 				object.put("SalesVolume", rs.getString("sales_volume"));
 				object.put("Integral", rs.getString("goods_integral"));
 				object.put("Evaluate", rs.getString("goods_evaluate"));
-				object.put("Paking", rs.getString("goods_packing"));
+				object.put("Paking", rs.getString("goods_packing"));*/
+				object.put("id",rs.getInt("id"));
+				object.put("name",rs.getString("name"));
+				object.put("price",rs.getDouble("price"));
+				object.put("category_id",rs.getInt("category_id"));
+				object.put("url",rs.getString("url"));
+				object.put("info",rs.getString("info"));
+				object.put("like_count",rs.getInt("like_count"));
+				object.put("sale_count",rs.getInt("sale_count"));
+				object.put("storage_count",rs.getInt("storage_count"));
+				object.put("on_sale", rs.getInt("on_sale"));
+				object.put("created_at", rs.getTimestamp("created_at"));
 				array.add(object);
 			}
 		} catch (SQLException e) {

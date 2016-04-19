@@ -19,24 +19,21 @@ public class UserDao implements IUserDao {
 	
 	@Override
 	public User findByNameAndPwd(String nickName, String passWord) {
-		String sSql = "select * from mo_user where nickname = ? and password = ?";
+		String sSql = "select * from user where nickname = ? and passwd = ?";
 		jdbc.getConnection();
 		ResultSet rs = jdbc.executeQuery(sSql,nickName,passWord);
 		User user = null;
 		try {
 			while(rs.next()){
 				user = new User();
-				user.setUser_Id(rs.getString("user_id"));
-				user.setEmail(rs.getString("email"));
-				user.setNickName(rs.getString("nickname"));
-				user.setPassword(rs.getString("password"));
+				user.setId(rs.getInt("id"));
+				user.setAccount(rs.getString("account"));
+				user.setPasswd(rs.getString("passwd"));
+				user.setNickname(rs.getString("nickname"));
+				user.setAvatar(rs.getString("avatar"));
 				user.setPhone(rs.getString("phone"));
-				user.setUser_integral(rs.getInt("user_integral"));
-				user.setEmail_Verify(rs.getString("email_verify"));
-				user.setEmail_Verify_Code(rs.getString("email_verify_code"));
-				user.setCreate_Time(rs.getDate("create_time"));
-				user.setLast_Login_Time(rs.getDate("last_login_time"));
-				user.setLast_Login_Ip(rs.getString("last_login_ip"));
+				user.setEmail(rs.getString("email"));
+				user.setCreate_at(rs.getTimestamp("created_at"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -49,24 +46,21 @@ public class UserDao implements IUserDao {
 
 	@Override
 	public User findByEmailAndPwd(String email, String passWord) {
-		String sSql = "select * from mo_user where email = ? and password = ?";
+		String sSql = "select * from user where email = ? and passwd = ?";
 		jdbc.getConnection();
 		ResultSet rs = jdbc.executeQuery(sSql,email,passWord);
 		User user = null;
 		try {
 			while(rs.next()){
 				user = new User();
-				user.setUser_Id(rs.getString("user_id"));
-				user.setEmail(rs.getString("email"));
-				user.setNickName(rs.getString("nickname"));
-				user.setPassword(rs.getString("password"));
+				user.setId(rs.getInt("id"));
+				user.setAccount(rs.getString("account"));
+				user.setPasswd(rs.getString("passwd"));
+				user.setNickname(rs.getString("nickname"));
+				user.setAvatar(rs.getString("avatar"));
 				user.setPhone(rs.getString("phone"));
-				user.setUser_integral(rs.getInt("user_integral"));
-				user.setEmail_Verify(rs.getString("email_verify"));
-				user.setEmail_Verify_Code(rs.getString("email_verify_code"));
-				user.setCreate_Time(rs.getDate("create_time"));
-				user.setLast_Login_Time(rs.getDate("last_login_time"));
-				user.setLast_Login_Ip(rs.getString("last_login_ip"));
+				user.setEmail(rs.getString("email"));
+				user.setCreate_at(rs.getTimestamp("created_at"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -80,33 +74,30 @@ public class UserDao implements IUserDao {
 	@Override
 	public int AddUser(User user) {
 		// TODO Auto-generated method stub
-		String sSql = "insert into mo_user value(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sSql = "insert into user value(?,?,?,?,?,?,?)";
 		jdbc.getConnection();
 		int count = 0;
-		count = jdbc.executeUpdate(sSql,user.getUser_Id(),user.getEmail(),user.getNickName(),
-				user.getPassword(),user.getUser_integral(),user.getEmail_Verify(),user.getEmail_Verify_Code(),
-				user.getCreate_Time(),user.getLast_Login_Time(),user.getPhone(),user.getLast_Login_Ip(),
-				user.getMessage());
+		count = jdbc.executeUpdate(sSql,user.getAccount(),user.getPasswd(),
+				user.getNickname(),user.getAvatar(),user.getPhone(),user.getEmail(),
+				user.getCreate_at());
 		return count;
 	}
 
 	@Override
 	public int UpdateUser(User user) {
-		String sSql = "update mo_user set email=?,nickname=?,password=?,"
-				+ "user_integral=?,email_verify=?,email_verify_code=?,create_time=?,last_login_time=?,phone=?,"
-				+ "last_login_ip=?,message=? where user_id=?";
+		String sSql = "update user set account=?,passwd=?,nickname=?,"
+				+ "avatar=?,phone=?,email=?,create_at=? where id=?";
 		jdbc.getConnection();
 		int count = 0;
-		count = jdbc.executeUpdate(sSql,user.getEmail(),user.getNickName(),
-				user.getPassword(),user.getUser_integral(),user.getEmail_Verify(),user.getEmail_Verify_Code(),
-				user.getCreate_Time(),user.getLast_Login_Time(),user.getPhone(),user.getLast_Login_Ip(),
-				user.getMessage(),user.getUser_Id());
+		count = jdbc.executeUpdate(sSql,user.getAccount(),user.getPasswd(),
+				user.getNickname(),user.getAvatar(),user.getPhone(),user.getEmail(),
+				user.getCreate_at(),user.getId());
 		return count;
 	}
 
 	@Override
 	public boolean findByName(String nickName) {
-		String sSql = "select * from mo_user where nickname = ?";
+		String sSql = "select * from user where nickname = ?";
 		jdbc.getConnection();
 		ResultSet rs = jdbc.executeQuery(sSql,nickName);
 		try {

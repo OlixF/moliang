@@ -52,14 +52,14 @@
 					}
 					item += "<div class='item'>"+
 								"<div class='animate-box bounceIn animated'>"+
-	        						"<a href='goods?action=show&id="+json[i].GoodsId+"' class='image-popup fh5co-board-img' target='_Blank' title='"+json[i].Name+"'>"+
-	        							"<img src='"+json[i].Img+"' alt='"+json[i].Name+"'/>"+
+	        						"<a href='goods?action=show&id="+json[i].id+"' class='image-popup fh5co-board-img' target='_Blank' title='"+json[i].name+"'>"+
+	        							"<img src='"+json[i].url+"' alt='"+json[i].name+"'/>"+
 	        						"</a>"+
 	        					"</div>"+
-	    						"<div class='fh5co-desc'>"+json[i].Introduce+
+	    						"<div class='fh5co-desc'>"+json[i].info+
 	    							"<div style='text-align:right;overflow:hidden;font-size:0;margin-bottom:10px;'>"+
-	    								"<a id='addcar' style='color:#F58B88;font-size:14px;' href='#' title='加入购物车'>"+
-	    									"&yen"+json[i].Price+"/"+json[i].Unit+" <i class='fa fa-shopping-cart'></i>"+
+	    								"<a id='addcar' style='color:#F58B88;font-size:14px;text-decoration:none;' href='#' title='加入购物车'>"+
+	    									"&yen"+json[i].price+" <i class='fa fa-shopping-cart'></i>"+
 	    								"</a>"+
 	    							"</div>"+
 	    						"</div>"+

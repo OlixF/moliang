@@ -1,5 +1,6 @@
 package com.moliang.Model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class User {
@@ -12,7 +13,91 @@ public class User {
 	  7 Email_Verify_Code Varchar(50) 邮箱激活验证码 
 	  8 Last_Login_Time Bigint(20) 最后登录的时间 
 	  9 Last_Login_IP Varchar(15) 最后登录的IP*/
-	private String User_Id;
+/*`id` int(11) NOT NULL AUTO_INCREMENT,
+  `account` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT '登录账户',
+  `passwd` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT '登录密码',
+  `nickname` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户昵称',
+  `avatar` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '头像',
+  `phone` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',*/
+	
+	private int id;
+	private String account;
+	private String passwd;
+	private String nickname;
+	private String avatar;
+	private String phone;
+	private String email;
+	private Timestamp create_at;
+	
+	public User() {
+		super();
+	}
+	public User(int id, String account, String passwd, String nickname, String avatar, String phone, String email,
+			Timestamp create_at) {
+		super();
+		this.id = id;
+		this.account = account;
+		this.passwd = passwd;
+		this.nickname = nickname;
+		this.avatar = avatar;
+		this.phone = phone;
+		this.email = email;
+		this.create_at = create_at;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	public String getPasswd() {
+		return passwd;
+	}
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Timestamp getCreate_at() {
+		return create_at;
+	}
+	public void setCreate_at(Timestamp create_at) {
+		this.create_at = create_at;
+	}
+	
+	
+	
+	/*private String User_Id;
 	private String Email;
 	private String Password;
 	private String NickName;
@@ -128,7 +213,7 @@ public class User {
 
 	public void setMessage(String message) {
 		Message = message;
-	}
+	}*/
 	
 	
 }
